@@ -1,0 +1,30 @@
+{% extends "project/layout.html" %}
+
+{% block body %}
+    <h2>{{role}}</h2>
+ 
+            {%for tutor in listoftutors%}
+            {%if tutor is not 0 %}
+            <a href = "{% url 'lifehack:profile' tutor %}">{{tutor}}</a> <br>
+            <a href = "{% url 'lifehack:tutorrequest' tutor %}">Press me</a>
+            {%else%}
+            <br>
+            {%endif%}
+            {%endfor%}
+            <hr> 
+            {%for specialty in listofspecialties%}
+            {%if tutor is not 0 %}
+            {{specialty}} <br>
+            {%else%}
+            <br>
+            {%endif%}
+            {%endfor%}
+<!--  -->
+            {%for tutee in listoftutees%}
+            {%if tutee is not 0 %}
+            <a href = "{% url 'lifehack:profile' tutee%}">{{tutee}}</a> <br>
+            {%else%}
+            <br>
+            {%endif%}
+            {%endfor%}
+{% endblock %}

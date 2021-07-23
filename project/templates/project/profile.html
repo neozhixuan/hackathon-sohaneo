@@ -1,0 +1,49 @@
+{% extends "project/layout.html" %}
+
+{% block body %}
+{{name}}
+<hr>
+REQUESTS<br>
+{%if requests%}
+{%for request in requests%}
+subject: {{request.subject}}<br>
+message: {{request.message}}<br>
+dates: {{request.dates}}<br>
+tutee: {{request.tutee}}<br>
+<form action = "{% url 'lifehack:accept'%}" method = "POST">
+    {%csrf_token%}
+    <input required type = "hidden" name = "subject" value = "{{request.subject}}">
+    <input required type = "hidden" name = "message" value = "{{request.message}}"></textarea>
+    <input  required type = "hidden" name = "dates" value = "{{request.dates}}">
+    <input type = "hidden" name = "tutee" value = "{{request.tutee}}">
+    <input type = "hidden" name = "tutor" value = "{{name}}">
+    <input type = "submit" value = "Accept">
+</form>
+{%endfor%}
+{%else%}
+
+Wait for a tutee to link up with you.
+{%endif%}
+<hr>
+ACCEPTS<br>
+{%if accepts%}
+{%for accept in accepts%}
+subject: {{accept.subject}}<br>
+message: {{accept.message}}<br>
+dates: {{accept.dates}}<br>
+tutee: {{accept.tutee}}<br>
+<form action = "{% url 'lifehack:classroom'%}" method = "POST">
+    {%csrf_token%}
+    <input required type = "hidden" name = "subject" value = "{{accept.subject}}">
+    <input required type = "hidden" name = "message" value = "{{accept.message}}"></textarea>
+    <input required type = "hidden" name = "dates" value = "{{accept.dates}}">
+    <input type = "hidden" name = "tutee" value = "{{accept.tutee}}">
+    <input type = "hidden" name = "tutor" value = "{{name}}">
+    <input type = "submit" value = "See classroom">
+</form>
+{%endfor%}
+{%else%}
+
+Wait for a tutee to link up with you.
+{%endif%}
+{% endblock %}

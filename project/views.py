@@ -198,7 +198,7 @@ def login_view(request):
 def create(request):
     if request.method == "POST":
         encryption = request.POST['encryption']
-        user = request.POST['user']
+        user = request.POST['creator']
         question = request.POST['question']
         answer = request.POST['answer']
         fakeanswer1 = request.POST['fakeanswer1']

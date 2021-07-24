@@ -5,6 +5,7 @@
 Design a poll for your tutor.
 
 <form action = "{% url 'lifehack:create' %}" method = "POST">
+    {%csrf_token%}
     <input type = "hidden" name = "encryption" value = "{{encryption}}">
     <input type = "hidden" name = "creator" value = "{{user}}">
     Question 1: <input type = "text" name = "question"><br>
@@ -22,6 +23,7 @@ Design a poll for your tutor.
     Wrong Answer: <input type = "text" name = "fakeanswer7" placeholder = "Wrong answer"><br>
     Wrong Answer: <input type = "text" name = "fakeanswer8" placeholder = "Wrong answer"><br>
     Wrong Answer: <input type = "text" name = "fakeanswer9" placeholder = "Wrong answer"><br>
+    <input type = "submit">
 </form>
 
 

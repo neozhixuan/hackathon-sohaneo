@@ -1,0 +1,29 @@
+{% extends "project/layout.html" %}
+
+{% block body %}
+
+Design a poll for your tutor.
+
+<form action = "{% url 'lifehack:create' %}" method = "POST">
+    <input type = "hidden" name = "encryption" value = "{{encryption}}">
+    <input type = "hidden" name = "creator" value = "{{user}}">
+    Question 1: <input type = "text" name = "question"><br>
+    Correct Answer: <input type = "text" name = "answer" placeholder = "Correct answer"><br>
+    Wrong Answer: <input type = "text" name = "fakeanswer1" placeholder = "Wrong answer"><br>
+    Wrong Answer: <input type = "text" name = "fakeanswer2" placeholder = "Wrong answer"><br>
+    Wrong Answer: <input type = "text" name = "fakeanswer3" placeholder = "Wrong answer"><br>
+    Question 2: <input type = "text" name = "question2"><br>
+    Correct Answer: <input type = "text" name = "answer2" placeholder = "Correct answer"><br>
+    Wrong Answer: <input type = "text" name = "fakeanswer4" placeholder = "Wrong answer"><br>
+    Wrong Answer: <input type = "text" name = "fakeanswer5" placeholder = "Wrong answer"><br>
+    Wrong Answer: <input type = "text" name = "fakeanswer6" placeholder = "Wrong answer"><br>
+    Question 3: <input type = "text" name = "question3"><br>
+    Correct Answer: <input type = "text" name = "answer3" placeholder = "Correct answer"><br>
+    Wrong Answer: <input type = "text" name = "fakeanswer7" placeholder = "Wrong answer"><br>
+    Wrong Answer: <input type = "text" name = "fakeanswer8" placeholder = "Wrong answer"><br>
+    Wrong Answer: <input type = "text" name = "fakeanswer9" placeholder = "Wrong answer"><br>
+</form>
+
+
+
+{% endblock %}

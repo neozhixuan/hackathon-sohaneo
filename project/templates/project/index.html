@@ -1,30 +1,202 @@
 {% extends "project/layout.html" %}
 
 {% block body %}
-    <h2>{{role}}</h2>
- 
-            {%for tutor in listoftutors%}
-            {%if tutor is not 0 %}
-            <a href = "{% url 'lifehack:profile' tutor %}">{{tutor}}</a> <br>
-            <a href = "{% url 'lifehack:tutorrequest' tutor %}">Press me</a>
-            {%else%}
-            <br>
-            {%endif%}
-            {%endfor%}
-            <hr> 
-            {%for specialty in listofspecialties%}
-            {%if tutor is not 0 %}
-            {{specialty}} <br>
-            {%else%}
-            <br>
-            {%endif%}
-            {%endfor%}
-<!--  -->
-            {%for tutee in listoftutees%}
-            {%if tutee is not 0 %}
-            <a href = "{% url 'lifehack:profile' tutee%}">{{tutee}}</a> <br>
-            {%else%}
-            <br>
-            {%endif%}
-            {%endfor%}
+{%if not listoftutors%}{%endif%}
+{%if listoftutors%}
+<span style = "font-weight: bold;">Find a tutor from a wide range of choices.</span>
+<div class="container">
+    
+    <div class="card">
+      <div class="avatar">
+        <img class="image" src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light' />
+      </div>
+      <div class="content-container">
+        <p class="title">{%for tutor in listoftutors%}{%if forloop.counter == 1%}<a style = "color: brown"href = "{% url 'lifehack:profile' tutor %}">{{tutor}}</a> - <a href = "{%url 'lifehack:tutorrequest' tutor %}">REQUEST</a>{%endif%}{%endfor%}
+            
+            {%for tutee in listoftutees%}{%if forloop.counter == 1%}<a href = "{% url 'lifehack:profile' tutee %}">{{tutee}}</a>{%endif%}{%endfor%}</p>
+        <p class="content">
+          Specialist in english
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="avatar">
+        <img class="image" src='https://avataaars.io/?avatarStyle=Circle&topType=WinterHat1&accessoriesType=Prescription01&hatColor=Red&hairColor=BlondeGolden&facialHairType=BeardMedium&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=Gray01&eyeType=Squint&eyebrowType=SadConcernedNatural&mouthType=Serious&skinColor=Pale' />
+      </div>
+      <div class="content-container">
+        <p class="title">{%for tutor in listoftutors%}{%if forloop.counter == 3%}<a style = "color: brown" href = "{% url 'lifehack:profile' tutor %}">{{tutor}}</a> - <a href = "{%url 'lifehack:tutorrequest' tutor %}">REQUEST</a>{%endif%}{%endfor%}
+            {%for tutee in listoftutees%}{%if forloop.counter == 1%}<a href = "{% url 'lifehack:profile' tutee %}">{{tutee}}</a>{%endif%}{%endfor%}</p>
+        <p class="content">
+          Specialist in math
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="avatar">
+        <img class="image" src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairFro&accessoriesType=Round&hairColor=Brown&facialHairType=BeardMedium&facialHairColor=Red&clotheType=ShirtScoopNeck&clotheColor=PastelOrange&eyeType=Dizzy&eyebrowType=RaisedExcitedNatural&mouthType=Twinkle&skinColor=Yellow' />
+      </div>
+      <div class="content-container">
+        <p class="title">{%for tutor in listoftutors%}{%if forloop.counter == 4%}<a style = "color: brown"href = "{% url 'lifehack:profile' tutor %}">{{tutor}} - <a href = "{%url 'lifehack:tutorrequest' tutor %}">REQUEST</a></a>{%endif%}{%endfor%}
+            {%for tutee in listoftutees%}{%if forloop.counter == 1%}<a href = "{% url 'lifehack:profile' tutee %}">{{tutee}}</a>{%endif%}{%endfor%}</p>
+        <p class="content">
+          Just finished O levels with A1 for math
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="avatar">
+        <img class="image" src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Wayfarers&hatColor=Pink&hairColor=Brown&facialHairType=Blank&facialHairColor=Black&clotheType=BlazerSweater&clotheColor=Blue03&eyeType=EyeRoll&eyebrowType=UpDownNatural&mouthType=Smile&skinColor=Brown' />
+      </div>
+      <div class="content-container">
+        <p class="title">{%for tutor in listoftutors%}{%if forloop.counter == 5%}<a style = "color: brown"href = "{% url 'lifehack:profile' tutor %}">{{tutor}} - <a href = "{%url 'lifehack:tutorrequest' tutor %}">REQUEST</a></a>{%endif%}{%endfor%}
+            {%for tutee in listoftutees%}{%if forloop.counter == 1%}<a href = "{% url 'lifehack:profile' tutee %}">{{tutee}}</a>{%endif%}{%endfor%}</p>
+        <p class="content">
+          Graduand of Raffles JC
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="avatar">
+        <img class="image" src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairBigHair&accessoriesType=Round&hairColor=Black&facialHairType=Blank&facialHairColor=Black&clotheType=GraphicShirt&clotheColor=Gray01&graphicType=Deer&eyeType=Close&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Tanned' />
+      </div>
+      <div class="content-container">
+        <p class="title">{%for tutor in listoftutors%}{%if forloop.counter == 6%}<a style = "color: brown"href = "{% url 'lifehack:profile' tutor %}">{{tutor}} - <a href = "{%url 'lifehack:tutorrequest' tutor %}">REQUEST</a></a>{%endif%}{%endfor%}
+            {%for tutee in listoftutees%}{%if forloop.counter == 1%}<a href = "{% url 'lifehack:profile' tutee %}">{{tutee}}</a>{%endif%}{%endfor%}</p>
+        <p class="content">
+          Currently teaching others in the learning lab.
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="avatar">
+        <img class="image" src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairBob&accessoriesType=Wayfarers&hairColor=Blonde&facialHairType=Blank&clotheType=ShirtVNeck&clotheColor=PastelGreen&eyeType=Dizzy&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Tanned' />
+      </div>
+      <div class="content-container">
+        <p class="title">{%for tutor in listoftutors%}{%if forloop.counter == 7%}<a style = "color: brown"href = "{% url 'lifehack:profile' tutor %}">{{tutor}} - <a href = "{%url 'lifehack:tutorrequest' tutor %}">REQUEST</a></a>{%endif%}{%endfor%}
+            {%for tutee in listoftutees%}{%if forloop.counter == 1%}<a href = "{% url 'lifehack:profile' tutee %}">{{tutee}}</a>{%endif%}{%endfor%}</p>
+        <p class="content">
+          Specialising in sciences
+        </p>
+      </div>
+    </div>
+  </div>
+{%endif%}
+{%if listoftutees%}
+<span style = "font-weight: bold;">Wait for a tutee to request for educational assistance!</span>
+<div class="container">
+    
+    <div class="card">
+      <div class="avatar">
+        <img class="image" src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light' />
+      </div>
+      <div class="content-container">
+        <p class="title">
+            {%for tutee in listoftutees%}{%if forloop.counter == 2%}<a href = "{% url 'lifehack:profile' tutee%}">{{tutee}}</a>{%endif%}{%endfor%}</p>
+        <p class="content">
+          Needs english help
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="avatar">
+        <img class="image" src='https://avataaars.io/?avatarStyle=Circle&topType=WinterHat1&accessoriesType=Prescription01&hatColor=Red&hairColor=BlondeGolden&facialHairType=BeardMedium&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=Gray01&eyeType=Squint&eyebrowType=SadConcernedNatural&mouthType=Serious&skinColor=Pale' />
+      </div>
+      <div class="content-container">
+        <p class="title">{%for tutor in listoftutors%}{%if forloop.counter == 1%}<a href = "{% url 'lifehack:profile' tutor %}">{{tutor}}</a>{%endif%}{%endfor%}
+            {%for tutee in listoftutees%}{%if forloop.counter == 7%}<a href = "{% url 'lifehack:profile' tutee %}">{{tutee}}</a>{%endif%}{%endfor%}</p>
+        <p class="content">
+          Requires math assistance sec 4
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="avatar">
+        <img class="image" src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairFro&accessoriesType=Round&hairColor=Brown&facialHairType=BeardMedium&facialHairColor=Red&clotheType=ShirtScoopNeck&clotheColor=PastelOrange&eyeType=Dizzy&eyebrowType=RaisedExcitedNatural&mouthType=Twinkle&skinColor=Yellow' />
+      </div>
+      <div class="content-container">
+        <p class="title">{%for tutor in listoftutors%}{%if forloop.counter == 4%}<a href = "{% url 'lifehack:profile' tutor %}">{{tutor}}</a>{%endif%}{%endfor%}
+            {%for tutee in listoftutees%}{%if forloop.counter == 8%}<a href = "{% url 'lifehack:profile' tutee %}">{{tutee}}</a>{%endif%}{%endfor%}</p>
+        <p class="content">
+          Struggling in sciences since p1
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="avatar">
+        <img class="image" src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Wayfarers&hatColor=Pink&hairColor=Brown&facialHairType=Blank&facialHairColor=Black&clotheType=BlazerSweater&clotheColor=Blue03&eyeType=EyeRoll&eyebrowType=UpDownNatural&mouthType=Smile&skinColor=Brown' />
+      </div>
+      <div class="content-container">
+        <p class="title">{%for tutor in listoftutors%}{%if forloop.counter == 5%}<a href = "{% url 'lifehack:profile' tutor %}">{{tutor}}</a>{%endif%}{%endfor%}
+            {%for tutee in listoftutees%}{%if forloop.counter == 9%}<a href = "{% url 'lifehack:profile' tutee %}">{{tutee}}</a>{%endif%}{%endfor%}</p>
+        <p class="content">
+          Aiming for top achiever in school
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="avatar">
+        <img class="image" src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairBigHair&accessoriesType=Round&hairColor=Black&facialHairType=Blank&facialHairColor=Black&clotheType=GraphicShirt&clotheColor=Gray01&graphicType=Deer&eyeType=Close&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Tanned' />
+      </div>
+      <div class="content-container">
+        <p class="title">{%for tutor in listoftutors%}{%if forloop.counter == 6%}<a href = "{% url 'lifehack:profile' tutor %}">{{tutor}}</a>{%endif%}{%endfor%}
+            {%for tutee in listoftutees%}{%if forloop.counter == 10%}<a href = "{% url 'lifehack:profile' tutee %}">{{tutee}}</a>{%endif%}{%endfor%}</p>
+        <p class="content">
+          Really wants to excel
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="avatar">
+        <img class="image" src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairBob&accessoriesType=Wayfarers&hairColor=Blonde&facialHairType=Blank&clotheType=ShirtVNeck&clotheColor=PastelGreen&eyeType=Dizzy&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Tanned' />
+      </div>
+      <div class="content-container">
+        <p class="title">{%for tutor in listoftutors%}{%if forloop.counter == 7%}<a href = "{% url 'lifehack:profile' tutor %}">{{tutor}}</a>{%endif%}{%endfor%}
+            {%for tutee in listoftutees%}{%if forloop.counter == 11%}<a href = "{% url 'lifehack:profile' tutee %}">{{tutee}}</a>{%endif%}{%endfor%}</p>
+        <p class="content">
+          Struggling in homework
+        </p>
+      </div>
+    </div>
+  </div>
+{%endif%}
+{%if not listoftutees and not listoftutors%}
+<div class="outer">
+	<div class="prod-logo">
+		<img src="https://cdn.dribbble.com/users/1860775/screenshots/6550972/s_kitap_logo.png?compress=1&resize=400x300" class="prod-img" alt="icon"/>
+		<ul class="main-nav">
+			<li class="nav-li"><a href="#">Home</a></li>
+			<li class="nav-li"><a href="#">About</a></li>
+			<li class="nav-li"><a href="#">Modules</a></li>
+			<li class="nav-li"><a href="#">Contact</a></li>
+      </ul>
+	</div>
+	<div class="inner">
+		<div class="prod-left">
+			<h1 class="prod-head"><span style="color:#0f457f">Welcome!</span>-TLS-</h1>
+			<div class="type-wrap">Help students
+                <span id="typed" style="white-space:pre;" class="typed"></span>
+              </div>
+              <script>
+                  $('document').ready(function(){
+                      var typed = new Typed('#typed',{
+                          strings: ["study", "learn", "grow."],
+                          typeSpeed: 100,
+                          startDelay: 0,
+                          backSpeed: 60,
+                          backDelay: 2000,
+                          loop: true,
+                          cursorChar: "|",
+                          contentType: 'html'
+                      })
+                  });
+              </script>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		</div>
+		<div class="prod-right">
+			<img src="https://github.com/abhinanduN/codepen/blob/master/human-image.png?raw=true" class="prod-human-img" alt="prod"/>
+		</div>
+	</div>
+</div>
+{%endif%}
+
 {% endblock %}

@@ -1,49 +1,94 @@
 {% extends "project/layout.html" %}
 
 {% block body %}
-{{name}}
-<hr>
-REQUESTS<br>
-{%if requests%}
-{%for request in requests%}
-subject: {{request.subject}}<br>
-message: {{request.message}}<br>
-dates: {{request.dates}}<br>
-tutee: {{request.tutee}}<br>
-<form action = "{% url 'lifehack:accept'%}" method = "POST">
-    {%csrf_token%}
-    <input required type = "hidden" name = "subject" value = "{{request.subject}}">
-    <input required type = "hidden" name = "message" value = "{{request.message}}"></textarea>
-    <input  required type = "hidden" name = "dates" value = "{{request.dates}}">
-    <input type = "hidden" name = "tutee" value = "{{request.tutee}}">
-    <input type = "hidden" name = "tutor" value = "{{name}}">
-    <input type = "submit" value = "Accept">
-</form>
-{%endfor%}
-{%else%}
 
-Wait for a tutee to link up with you.
-{%endif%}
-<hr>
-ACCEPTS<br>
-{%if accepts%}
-{%for accept in accepts%}
-subject: {{accept.subject}}<br>
-message: {{accept.message}}<br>
-dates: {{accept.dates}}<br>
-tutee: {{accept.tutee}}<br>
-<form action = "{% url 'lifehack:classroom'%}" method = "POST">
-    {%csrf_token%}
-    <input required type = "hidden" name = "subject" value = "{{accept.subject}}">
-    <input required type = "hidden" name = "message" value = "{{accept.message}}"></textarea>
-    <input required type = "hidden" name = "dates" value = "{{accept.dates}}">
-    <input type = "hidden" name = "tutee" value = "{{accept.tutee}}">
-    <input type = "hidden" name = "tutor" value = "{{name}}">
-    <input type = "submit" value = "See classroom">
-</form>
-{%endfor%}
-{%else%}
+<section class="profile_container">
+    <div class="profile_img_section">
+        <img class="profile_img-LG" src="https://barryburnett.net/wp-content/uploads/2018/03/Blank-Avatar-Man-in-Suit.jpg" />
+        <div class="flag_wrapper">
+            <img class="flag" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/flag-singapore_1f1f8-1f1ec.png" alt="South Korean Flag" />
+        </div>
+    </div>
+    
+    <div class="profile_desc_section">
+        <h2>{{name}}</h2>
+        <h3>-</h3>
+        <p class="description">Points: {{points}}</p>
+        <p class = "description">REQUESTS FROM TUTEES<br>
+            {%if requests%}
+            {%for request in requests%}
+            subject: {{request.subject}}<br>
+            message: {{request.message}}<br>
+            dates: {{request.dates}}<br>
+            tutee: {{request.tutee}}<br>
+            <form action = "{% url 'lifehack:accept'%}" method = "POST">
+                {%csrf_token%}
+                <input required type = "hidden" name = "subject" value = "{{request.subject}}">
+                <input required type = "hidden" name = "message" value = "{{request.message}}"></textarea>
+                <input  required type = "hidden" name = "dates" value = "{{request.dates}}">
+                <input type = "hidden" name = "tutee" value = "{{request.tutee}}">
+                <input type = "hidden" name = "tutor" value = "{{name}}">
+                <input type = "submit" value = "Accept">
+            </form>
+            {%endfor%}
+            {%else%}
+            
+            Wait for a tutee to link up with you.
+            {%endif%}
+            <hr></p>
+        <p class = "description">ACCEPTED CLASSES<br>
+            {%if accepts%}
+            {%for accept in accepts%}
+            subject: {{accept.subject}}<br>
+            message: {{accept.message}}<br>
+            dates: {{accept.dates}}<br>
+            tutee: {{accept.tutee}}<br>
+            {%if name == user.username %}
+            <form action = "{% url 'lifehack:classroom'%}" method = "POST">
+                {%csrf_token%}
+                <input required type = "hidden" name = "encryption" value = "{{accept.encryption}}">
+                <input type = "submit" value = "See classroom">
+            </form>
+            {%endif%}
+            -<br>
+            {%endfor%}
+            {%else%}
+            
+            Wait for a tutee to link up with you.
+            {%endif%}</p>
+        <div class="interests">
+            <span class="interests_item">Science</span>
+            <span class="interests_item">Math</span>
+            <span class="interests_item">English</span>
+        </div>
+    </div>
 
-Wait for a tutee to link up with you.
-{%endif%}
+</section>
+
+<div class="info">
+    <ul>
+        <li>
+            <div class="link_img_wrapper">
+                <img class="link_img" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/271/round-pushpin_1f4cd.png" alt="">
+            </div>
+            <p>Singapore</p>
+        </li>
+        <li>
+            <div class="link_img_wrapper">
+                <img class="link_img" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/271/speaking-head_1f5e3-fe0f.png" alt="">
+            </div>
+            <p>English</p>
+        </li>
+        <li>
+            <div class="link_img_wrapper">
+                <img class="link_img" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/265/globe-with-meridians_1f310.png" alt="">
+            </div>
+            <p>facebook.com/username</p>
+        </li>
+    </ul>
+</div>
+{{name}}<br>
+Points: {{points}}
+<hr>
+
 {% endblock %}

@@ -1,11 +1,12 @@
 {% extends "project/layout.html" %}
 
 {% block body %}
-<form action = "{% url 'lifehack:tutorrequest' tutor%}" method = "POST">
+<form style = "padding: 10px; margin: 10px; background-color: beige;"action = "{% url 'lifehack:tutorrequest' tutor%}" method = "POST">
     {%csrf_token%}
-    Subject Requiring Help: <input required type = "text" name = "subject">
-    Message: <textarea required type = "text" name = "message"></textarea>
-    Available Dates: <input  required type = "text" name = "dates">
+    <h2>Send a message to ask for help from a tutor!</h2><br>
+    Subject Requiring Help: <input required type = "text" name = "subject"><br>
+    Message: <textarea required type = "text" name = "message"></textarea><br>
+    Available Dates: <input  required type = "text" name = "dates"><br>
     <input type = 'hidden' name = "tutee" value = "{{user.username}}">
     <input type = 'hidden' name = "tutor" value = "{{tutor}}">
     <input type = 'submit'>

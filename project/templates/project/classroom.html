@@ -4,6 +4,94 @@
 CLASSROOM<hr>
 Tutor: {{details.tutor}}<br>
 Tutee: {{details.tutee}}<br>
-Message: {{details.message}}
+Message: {{details.message}}<br>
+Encryption Key: {{details.encryption}}
+<hr>
+
+{%for message in messages%}
+{% if message.tuteebool == 'True' %}
+<span style = "background-color: gray;">{{message.message}} - {{message.user}}</span><br>
+{% else %}
+<span style = "background-color: green;">{{message.message}} - {{message.user}}</span><br>
+{% endif %}
+{% endfor %}
+
+<hr>
+<!-- If he is tutee -->
+{%if tutee is not None%}
+Reply to tutor:<br>
+<form action = "{% url 'lifehack:tuteemessage'%}" method = "POST">
+    {%csrf_token%}
+    <input type = "hidden" name = "user" value = "{{details.tutee}}">
+    <input type = "hidden" name = "encryption" value = "{{details.encryption}}">
+    <input type = "hidden" name = "tutee" value = "True">
+    <input type = "text" name = "message" placeholder="Reply...">
+    <input type = "submit">
+</form>
+
+<!-- If he is a tutor -->
+{%else%}
+Send a message to your tutee:<br>
+<form action = "{% url 'lifehack:tuteemessage'%}" method = "POST">
+    {%csrf_token%}
+    <input type = "hidden" name = "user" value = "{{details.tutor}}">
+    <input type = "hidden" name = "encryption" value = "{{details.encryption}}">
+    <input type = "hidden" name = "tutee" value = "False">
+    <input type = "text" name = "message" placeholder="Reply...">
+    <input type = "submit">
+</form>
+<hr>
+<form action = "{% url 'lifehack:polldesign' %}" method = "POST">
+    {%csrf_token%}
+    <input type = "hidden" name = "encryption" value = "{{details.encryption}}">
+    <input type = "hidden" name = "user" value = "{{details.tutor}}">
+    <input type = "submit" value = "Design a poll">
+</form>
+{%endif%}
+
+
+<!-- Trivia  -->
+<hr>
+Trivia<br>
+
+<p id = "answer"></p>
+{%for poll in polls%}
+
+{{poll.question}}<br>
+<button onclick = "correct()">{{poll.answer}}</button>
+<button onclick = "wrong()">{{poll.fakeanswer1}}</button>
+<button onclick = "wrong()">{{poll.fakeanswer2}}</button>
+<button onclick = "wrong()">{{poll.fakeanswer3}}</button>
+<br>
+{%if poll.question2%}
+{{poll.question2}}<br>
+<button onclick = "wrong()">{{poll.fakeanswer5}}</button>
+<button onclick = "wrong()">{{poll.fakeanswer6}}</button>
+<button onclick = "correct()">{{poll.answer2}}</button>
+<button onclick = "wrong()">{{poll.fakeanswer4}}</button>
+
+<br>
+{%endif%}
+
+{%if poll.question3%}
+{{poll.question3}}<br>
+
+<button onclick = "wrong()">{{poll.fakeanswer7}}</button>
+<button onclick = "wrong()">{{poll.fakeanswer8}}</button>
+<button onclick = "wrong()">{{poll.fakeanswer9}}</button>
+<button onclick = "correct()">{{poll.answer3}}</button>
+{%endif%}
+<hr>
+<script>
+        function correct(){
+            document.getElementById('answer').innerHTML = 'Correct.'
+        }
+        function wrong(){
+            document.getElementById('answer').innerHTML = 'Wrong.'
+        }
+</script>
+{%empty%}
+The turo has not designed a trivia quiz.
+{%endfor%}
 
 {% endblock %}

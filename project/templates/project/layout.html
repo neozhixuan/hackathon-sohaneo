@@ -3,34 +3,38 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Project{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'project/styles.css' %}" rel="stylesheet">
+        <script src="{% static 'project/typed.js' %}"></script>
     </head>
     <body>
-        <h1>Project</h1>
-        <div>
-            {% if user.is_authenticated %}
-                Signed in as <strong><a href = "{% url 'lifehack:profile' user.username %}">{{ user.username }}</a></strong>.
-            {% else %}
-                Not signed in.
-            {% endif %}
-        </div>
         <ul class="nav">
+            <li class = "nav-item">
+                <h1>The Learning Star</h1>
+            </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'lifehack:index' %}">Index</a>
+                <a class="nav-link" href="{% url 'lifehack:index' %}">Notice Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'lifehack:canteen' %}">Canteen</a>
             </li>
             {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'lifehack:logout' %}">Log Out</a>
                 </li>
+                <li class = "nav-item">
+                    Signed in as: <strong><a href = "{% url 'lifehack:profile' user.username %}">{{ user.username }}</a></strong>.
+                </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'lifehack:login' %}">Log In</a>
+                    <a class="nav-link" href="{% url 'lifehack:login' %}">Log In/Register</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'lifehack:register' %}">Register</a>
+                <li class = "nav-item">
+                    Not signed in.
                 </li>
+                
             {% endif %}
         </ul>
         <hr>

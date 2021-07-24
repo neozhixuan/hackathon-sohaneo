@@ -1,0 +1,250 @@
+{% extends "project/layout.html" %}
+
+{% block body %}
+<span style= "font-weight: bold;">Welcome to the canteen. Send a message to everyone! Get likes and convert it to points.</span>
+<form style = "padding: 10px; margin: 10px; background-color: beige ;"  action = "{% url 'lifehack:canteen' %}" method = "POST">
+    {%csrf_token%}
+    <h2>Write a message:</h2>
+    <input type = "text" name = "message" placeholder = "Type a message...">
+    <input type = "hidden" name = "user" value = "{{user.username}}">
+    <input type = "submit">
+</form>
+<div class="forum-wrapper">
+    <div class="categories">
+      <div class="topic-title">
+        <div class="tt-title">Category Name</div>
+        <div class="tt-topic"> Topics</div>
+        <div class="tt-post">Posts</div>
+        <div class="tt-l-post">Last Post</div>
+      </div>
+      <!--Content-->
+      <div class="topic-content">
+        <div class="tc-description">
+          <div class="d-title">{%for message in messages%}
+            {%if forloop.counter == 2%}
+          {{message.user}}{%endif%}
+          {%endfor%}</div>
+            
+          <div class="d-description">
+            <p>{%for message in messages%}
+                {%if forloop.counter == 2%}
+              {{message.message}}{%endif%}
+              {%endfor%}</p>
+          </div>
+          <div class="mobile-info">
+            
+            
+            <div class="mi-lpost">
+              <p>Last Post</p>
+              <p>by {%for message in messages%}
+                {%if forloop.counter == 2%}
+              {{message.user}}{%endif%}
+              {%endfor%}</p>
+            </div>
+          </div>
+        </div>
+        <div class="tc-topic">{%for message in messages%}
+            {%if forloop.counter == 2%}
+          {{message.likes}}{%endif%}
+          {%endfor%}</div>
+        <div class="tc-post"><form action = "{% url 'lifehack:like' %}" method = "POST">
+            {%csrf_token%}
+            <input type = "hidden" name = "message" value = "{{message.message}}">
+            <input type = "hidden" name = "user" value = "{{message.user}}">
+            <input type = "submit" value = "Like">
+        </form></div>
+        <div class="tc-l-post">
+          <div class="lp-user">by {%for message in messages%}
+            {%if forloop.counter == 2%}
+          {{message.user}}{%endif%}
+          {%endfor%}</div>
+          <div class="lp-date"></div>
+        </div>
+      </div>
+      <!--End of Content-->
+      <div class="topic-content">
+        <div class="tc-description">
+          <div class="d-title">{%for message in messages%}
+            {%if forloop.counter == 3%}
+          {{message.user}}{%endif%}
+          {%endfor%}</div>
+            
+          <div class="d-description">
+            <p>{%for message in messages%}
+                {%if forloop.counter == 3%}
+              {{message.message}}{%endif%}
+              {%endfor%}</p>
+          </div>
+          <div class="mobile-info">
+            
+            
+            <div class="mi-lpost">
+              <p>Last Post</p>
+              <p>by {%for message in messages%}
+                {%if forloop.counter == 3%}
+              {{message.user}}{%endif%}
+              {%endfor%}</p>
+            </div>
+          </div>
+        </div>
+        <div class="tc-topic">{%for message in messages%}
+            {%if forloop.counter == 3%}
+          {{message.likes}}{%endif%}
+          {%endfor%}</div>
+        <div class="tc-post"><form action = "{% url 'lifehack:like' %}" method = "POST">
+            {%csrf_token%}
+            <input type = "hidden" name = "message" value = "{{message.message}}">
+            <input type = "hidden" name = "user" value = "{{message.user}}">
+            <input type = "submit" value = "Like">
+        </form></div>
+        <div class="tc-l-post">
+          <div class="lp-user">by {%for message in messages%}
+            {%if forloop.counter == 3%}
+          {{message.user}}{%endif%}
+          {%endfor%}</div>
+          <div class="lp-date"></div>
+        </div>
+      </div>
+      <div class="topic-content">
+        <div class="tc-description">
+          <div class="d-title">{%for message in messages%}
+            {%if forloop.counter == 4%}
+          {{message.user}}{%endif%}
+          {%endfor%}</div>
+            
+          <div class="d-description">
+            <p>{%for message in messages%}
+                {%if forloop.counter == 4%}
+              {{message.message}}{%endif%}
+              {%endfor%}</p>
+          </div>
+          <div class="mobile-info">
+            
+            
+            <div class="mi-lpost">
+              <p>Last Post</p>
+              <p>by {%for message in messages%}
+                {%if forloop.counter == 4%}
+              {{message.user}}{%endif%}
+              {%endfor%}</p>
+            </div>
+          </div>
+        </div>
+        <div class="tc-topic">{%for message in messages%}
+            {%if forloop.counter == 4%}
+          {{message.likes}}{%endif%}
+          {%endfor%}</div>
+        <div class="tc-post"><form action = "{% url 'lifehack:like' %}" method = "POST">
+            {%csrf_token%}
+            <input type = "hidden" name = "message" value = "{{message.message}}">
+            <input type = "hidden" name = "user" value = "{{message.user}}">
+            <input type = "submit" value = "Like">
+        </form></div>
+        <div class="tc-l-post">
+          <div class="lp-user">by {%for message in messages%}
+            {%if forloop.counter == 4%}
+          {{message.user}}{%endif%}
+          {%endfor%}</div>
+          <div class="lp-date"></div>
+        </div>
+      </div>
+      <div class="topic-content">
+        <div class="tc-description">
+          <div class="d-title">{%for message in messages%}
+            {%if forloop.counter == 5%}
+          {{message.user}}{%endif%}
+          {%endfor%}</div>
+            
+          <div class="d-description">
+            <p>{%for message in messages%}
+                {%if forloop.counter == 5%}
+              {{message.message}}{%endif%}
+              {%endfor%}</p>
+          </div>
+          <div class="mobile-info">
+            
+            
+            <div class="mi-lpost">
+              <p>Last Post</p>
+              <p>by {%for message in messages%}
+                {%if forloop.counter == 5%}
+              {{message.user}}{%endif%}
+              {%endfor%}</p>
+            </div>
+          </div>
+        </div>
+        <div class="tc-topic">{%for message in messages%}
+            {%if forloop.counter == 5%}
+          {{message.likes}}{%endif%}
+          {%endfor%}</div>
+        <div class="tc-post"><form action = "{% url 'lifehack:like' %}" method = "POST">
+            {%csrf_token%}
+            <input type = "hidden" name = "message" value = "{{message.message}}">
+            <input type = "hidden" name = "user" value = "{{message.user}}">
+            <input type = "submit" value = "Like">
+        </form></div>
+        <div class="tc-l-post">
+          <div class="lp-user">by {%for message in messages%}
+            {%if forloop.counter == 5%}
+          {{message.user}}{%endif%}
+          {%endfor%}</div>
+          <div class="lp-date"></div>
+        </div>
+      </div>
+      <div class="topic-content">
+        <div class="tc-description">
+          <div class="d-title">{%for message in messages%}
+            {%if forloop.counter == 6%}
+          {{message.user}}{%endif%}
+          {%endfor%}</div>
+            
+          <div class="d-description">
+            <p>{%for message in messages%}
+                {%if forloop.counter == 6%}
+              {{message.message}}{%endif%}
+              {%endfor%}</p>
+          </div>
+          <div class="mobile-info">
+            
+            
+            <div class="mi-lpost">
+              <p>Last Post</p>
+              <p>by {%for message in messages%}
+                {%if forloop.counter == 6%}
+              {{message.user}}{%endif%}
+              {%endfor%}</p>
+            </div>
+          </div>
+        </div>
+        <div class="tc-topic">{%for message in messages%}
+            {%if forloop.counter == 6%}
+          {{message.likes}}{%endif%}
+          {%endfor%}</div>
+        <div class="tc-post"><form action = "{% url 'lifehack:like' %}" method = "POST">
+            {%csrf_token%}
+            <input type = "hidden" name = "message" value = "{{message.message}}">
+            <input type = "hidden" name = "user" value = "{{message.user}}">
+            <input type = "submit" value = "Like">
+        </form></div>
+        <div class="tc-l-post">
+          <div class="lp-user">by {%for message in messages%}
+            {%if forloop.counter == 6%}
+          {{message.user}}{%endif%}
+          {%endfor%}</div>
+          <div class="lp-date"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<form action = "{% url 'lifehack:like' %}" method = "POST">
+    {%csrf_token%}
+    <input type = "hidden" name = "message" value = "{{message.message}}">
+    <input type = "hidden" name = "user" value = "{{message.user}}">
+    <input type = "submit" value = "Like">
+</form>
+<hr>
+
+
+{% endblock %}

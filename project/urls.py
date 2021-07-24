@@ -11,4 +11,9 @@ urlpatterns = [
     path("<str:tutor>/tutorrequest", views.tutorrequest, name="tutorrequest"),
     path("accept", views.accept, name="accept"),
     path("classroom", views.classroom, name="classroom"),
+    path("tuteemessage", views.tuteemessage, name="tuteemessage"),
+    path("polldesign", views.polldesign, name = "polldesign"),
+    path("create", views.create, name = "create"),
+    path("canteen", views.canteen, name = "canteen"),
+    path("like", views.like, name = "like"),
 ]

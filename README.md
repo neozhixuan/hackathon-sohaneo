@@ -7,4 +7,6 @@ Created in 12 hours for NUS LifeHack Hackathon
 
 #### At the same time, students require one-on-one tuitioning with teachers and peers, which pose a risk of infection.
 
-# Our product makes traditional online tutoring more interesting, by connecting tutors and tutees 1 on 1 in virtual classrooms and providing them with interactive learning tools. This is not only safe and effective, solving 2 problems at once, but also makes their time more exciting with interactive tools. 
+# The Solution
+
+#### Our product makes traditional online tutoring more interesting, by connecting tutors and tutees 1 on 1 in virtual classrooms and providing them with interactive learning tools. This is not only safe and effective, solving 2 problems at once, but also makes their time more exciting with interactive tools. 
